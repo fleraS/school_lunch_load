@@ -16,6 +16,11 @@ var app = http.createServer(function(request,response){
     response.end(fs.readFileSync(__dirname + url));
 
     const jsonFile = fs.readFileSync('./school_inf.json', 'utf8');
+    const value = jsonFile["list"]
+    console.log(value)
+    Object.keys(jsonFile).forEach(function(k){
+      console.log('키값 : '+ k + ', 데이터값 : ' + jsonFile[k]);
+    });
 
     fetch("https://foodsafetykorea.go.kr/portal/sensuousmenu/selectSchoolWeekMealsDetail.do", {
     "headers": {
@@ -34,18 +39,11 @@ var app = http.createServer(function(request,response){
     "Referer": "https://foodsafetykorea.go.kr/portal/sensuousmenu/schoolMealsDetail.do?",
     "Referrer-Policy": "strict-origin-when-cross-origin"
     },
-<<<<<<< HEAD
-    "body": "url",
-=======
-    "body": "menu_no=&menu_grp=&menuNm=&copyUrl=https%3A%2F%2Ffoodsafetykorea.go.kr%3A443%2Fportal%2Fsensuousmenu%2FschoolMealsDetail.do%3F&mberId=&mberNo=&favorListCnt=0&schl_cd=7501017&type_cd=W&year=2022&month=10&week=4&select_year=2022&select_month=10&select_week=4&region=&search_keyword=%EC%98%A5%EB%8F%99%EC%A4%91",
->>>>>>> e2d3e6a (commit)
+    "body": `menu_no=&menu_grp=&menuNm=&copyUrl=https%3A%2F%2Ffoodsafetykorea.go.kr%3A443%2Fportal%2Fsensuousmenu%2FschoolMealsDetail.do%3F&mberId=&mberNo=&favorListCnt=0&schl_cd=7501017&type_cd=W&year=2022&month=10&week=4&select_year=2022&select_month=10&select_week=4&region=&search_keyword=%EC%98%A5%EB%8F%99%EC%A4%91`,
     "method": "POST"
     }).then(respond => respond.json())
     .then(json => console.log(json));
 
 });
-<<<<<<< HEAD
+
 app.listen(3000);
-=======
-app.listen(3000);
->>>>>>> e2d3e6a (commit)
